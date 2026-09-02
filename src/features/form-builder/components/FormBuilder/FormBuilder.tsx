@@ -6,6 +6,7 @@ import {FieldToolbar} from '@features/form-builder/components/FieldToolbar/Field
 import {FieldList} from '@features/form-builder/components/FieldList/FieldList.tsx';
 import {FieldEditor} from '@features/form-builder/components/FieldEditor/FieldEditor.tsx';
 import {FormPreview} from '@features/form-builder/components/FormPreview/FormPreview.tsx';
+import {ConfigTransfer} from '@features/form-builder/components/ConfigTransfer/ConfigTransfer.tsx';
 
 
 export function FormBuilder() {
@@ -45,6 +46,7 @@ export function FormBuilder() {
             </div>
 
             <FormPreview />
+            <ConfigTransfer />
         </section>
     );
 }
