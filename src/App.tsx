@@ -1,6 +1,6 @@
 
 import {FormBuilderProvider} from '@features/form-builder/model/FormBuilderProvider.tsx';
-import {FormBuilder} from '@components/FormBuilder/FormBuilder.tsx';
+import { FormBuilder } from '@features/form-builder';
 
 // function DebugBuilder() {
 //     const { fields } = useFormBuilder();

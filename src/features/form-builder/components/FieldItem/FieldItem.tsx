@@ -2,13 +2,13 @@ import { Button } from '@shared/components';
 
 
 
-import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions';
+import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions.ts';
 
-import type { FormField } from '@features/form-builder/model/form-builder.types';
+import type { FormField } from '@features/form-builder/model/form-builder.types.ts';
 
 import './FieldItem.css';
-import {FieldToolbar} from '@components/FieldToolbar/FieldToolbar.tsx';
-import {FieldList} from '@components/FieldList/FieldList.tsx';
+import {FieldToolbar} from '@features/form-builder/components/FieldToolbar/FieldToolbar.tsx';
+import {FieldList} from '@features/form-builder/components/FieldList/FieldList.tsx';
 import {useFormBuilder} from '@features/form-builder/hooks/useFormBuilder.ts';
 
 interface FieldItemProps {

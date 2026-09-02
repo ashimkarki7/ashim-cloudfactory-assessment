@@ -1,8 +1,8 @@
 import { Button } from '@shared/components';
 
-import { FIELD_DEFINITIONS } from '@features/form-builder/model/field.registry';
+import { FIELD_DEFINITIONS } from '@features/form-builder/model/field.registry.ts';
 
-import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions';
+import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions.ts';
 
 import './FieldToolbar.css';
 

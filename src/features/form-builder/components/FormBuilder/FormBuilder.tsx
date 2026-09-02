@@ -1,10 +1,10 @@
 
-import { useFormBuilder } from '@features/form-builder/hooks/useFormBuilder';
+import { useFormBuilder } from '@features/form-builder/hooks/useFormBuilder.ts';
 
 import './FormBuilder.css';
-import {FieldToolbar} from '@components/FieldToolbar/FieldToolbar.tsx';
-import {FieldList} from '@components/FieldList/FieldList.tsx';
-import {FieldEditor} from '@components/FieldEditor/FieldEditor.tsx';
+import {FieldToolbar} from '@features/form-builder/components/FieldToolbar/FieldToolbar.tsx';
+import {FieldList} from '@features/form-builder/components/FieldList/FieldList.tsx';
+import {FieldEditor} from '@features/form-builder/components/FieldEditor/FieldEditor.tsx';
 
 
 export function FormBuilder() {

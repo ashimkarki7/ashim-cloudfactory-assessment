@@ -6,18 +6,18 @@ import {
 import {
     COMMON_FIELD_PROPERTIES,
     FIELD_PROPERTIES,
-} from '@features/form-builder/model/property.registry';
+} from '@features/form-builder/model/property.registry.ts';
 
-import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions';
+import { useFormBuilderActions } from '@features/form-builder/hooks/useFormBuilderActions.ts';
 
 import type {
     EditablePropertyKey,
     PropertyDefinition,
-} from '@features/form-builder/model/property.registry';
+} from '@features/form-builder/model/property.registry.ts';
 
 import type {
     FormField,
-} from '@features/form-builder/model/form-builder.types';
+} from '@features/form-builder/model/form-builder.types.ts';
 
 import './PropertyEditor.css';
 

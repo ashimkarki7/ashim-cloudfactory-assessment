@@ -1,8 +1,8 @@
 
-import { useSelectedField } from '@features/form-builder/hooks/useSelectedField';
+import { useSelectedField } from '@features/form-builder/hooks/useSelectedField.ts';
 
 import './FieldEditor.css';
-import {PropertyEditor} from '@components/PropertyEditor/PropertyEditor.tsx';
+import {PropertyEditor} from '@features/form-builder/components/PropertyEditor/PropertyEditor.tsx';
 import {getFieldConfigurationError} from '@features/form-builder/utils/field-tree.utils.ts';
 
 export function FieldEditor() {

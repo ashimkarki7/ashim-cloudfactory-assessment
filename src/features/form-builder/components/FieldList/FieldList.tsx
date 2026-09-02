@@ -1,8 +1,8 @@
 
-import type { FormField } from '@features/form-builder/model/form-builder.types';
+import type { FormField } from '@features/form-builder/model/form-builder.types.ts';
 
 import './FieldList.css';
-import {FieldItem} from '@components/FieldItem/FieldItem.tsx';
+import {FieldItem} from '@features/form-builder/components/FieldItem/FieldItem.tsx';
 
 interface FieldListProps {
     fields: FormField[];
