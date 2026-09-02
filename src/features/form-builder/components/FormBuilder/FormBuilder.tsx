@@ -5,12 +5,11 @@ import './FormBuilder.css';
 import {FieldToolbar} from '@features/form-builder/components/FieldToolbar/FieldToolbar.tsx';
 import {FieldList} from '@features/form-builder/components/FieldList/FieldList.tsx';
 import {FieldEditor} from '@features/form-builder/components/FieldEditor/FieldEditor.tsx';
+import {FormPreview} from '@features/form-builder/components/FormPreview/FormPreview.tsx';
 
 
 export function FormBuilder() {
-    const {
-        fields,
-    } = useFormBuilder();
+    const { fields } = useFormBuilder();
 
     return (
         <section className="form-builder">
@@ -22,8 +21,7 @@ export function FormBuilder() {
 
                     <p className="form-builder__description">
                         Add fields, configure properties,
-                        create nested groups and preview
-                        your form.
+                        create nested groups and preview your form.
                     </p>
                 </div>
             </header>
@@ -36,9 +34,7 @@ export function FormBuilder() {
                         <FieldToolbar />
                     </div>
 
-                    <FieldList
-                        fields={fields}
-                    />
+                    <FieldList fields={fields} />
                 </section>
 
                 <aside className="form-builder__panel">
@@ -47,6 +43,8 @@ export function FormBuilder() {
                     <FieldEditor />
                 </aside>
             </div>
+
+            <FormPreview />
         </section>
     );
 }
