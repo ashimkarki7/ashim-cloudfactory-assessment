@@ -1,46 +1,52 @@
 # Configurable Form Builder
 
-A configurable and recursive form builder developed as part of a Senior Frontend Engineer technical assessment.
+Senior Frontend Engineer technical assessment implementation.
 
-The application allows users to dynamically construct forms, configure individual field properties, create recursively nested groups, preview the generated form in real time, validate user input, and import/export the entire form configuration as JSON.
+The application allows users to dynamically create form fields, configure their properties, create recursively nested groups, preview the generated form, validate input, and import/export the configuration as JSON.
 
 ## Features
 
-### Form Builder
+- Text fields
+- Number fields with optional min/max
+- Recursive groups
+- Configurable labels
+- Required fields
+- Delete fields
+- Move fields up/down within the same group
+- Live form preview
+- Required and numeric validation
+- Required group validation
+- JSON export
+- Validated JSON import
+- Duplicate ID validation
+- Recursive configuration validation
 
-The builder supports three field types:
+## Technical Approach
 
-- Text
-- Number
-- Group
+Built with:
 
-Groups can contain text fields, number fields, and additional groups recursively.
+- React
+- TypeScript
+- Vite
+- Context API
+- useReducer
+- Custom hooks
+- Native HTML controls
+- CSS
 
-Each field supports:
+No state management library, form library, validation library, or UI framework is used.
 
-- Label configuration
-- Required state
-- Delete
-- Move up
-- Move down
+## Architecture
 
-Number fields additionally support:
-
-- Minimum value
-- Maximum value
-
-### Recursive Groups
-
-Groups can be nested to an arbitrary depth.
-
-For example:
+The project uses feature-based organization:
 
 ```text
-Personal Information
-├── Name
-├── Age
-└── Address
-    ├── Street
-    └── Location
-        ├── City
-        └── Postal Code
+src/
+├── features/
+│   └── form-builder/
+│       ├── components/
+│       ├── hooks/
+│       ├── model/
+│       └── utils/
+└── shared/
+    └── components/

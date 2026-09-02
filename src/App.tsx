@@ -2,28 +2,6 @@
 import {FormBuilderProvider} from '@features/form-builder/model/FormBuilderProvider.tsx';
 import { FormBuilder } from '@features/form-builder';
 
-// function DebugBuilder() {
-//     const { fields } = useFormBuilder();
-//
-//
-//     return (
-//         <main>
-//             <h1>
-//                 Configurable Form Builder
-//             </h1>
-//
-//             <FieldToolbar />
-//
-//             <pre>
-//         {JSON.stringify(
-//             fields,
-//             null,
-//             2,
-//         )}
-//       </pre>
-//         </main>
-//     );
-// }
 
 export function App() {
     return (
