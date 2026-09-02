@@ -1,6 +1,7 @@
 import type {
     FormField,
     FormValues,
+    GroupField,
 } from '@features/form-builder/model/form-builder.types';
 
 export const getInputFields = (
@@ -14,6 +15,22 @@ export const getInputFields = (
         }
 
         return [field];
+    });
+
+export const getGroups = (
+    fields: FormField[],
+): GroupField[] =>
+    fields.flatMap((field) => {
+        if (field.type !== 'group') {
+            return [];
+        }
+
+        return [
+            field,
+            ...getGroups(
+                field.children,
+            ),
+        ];
     });
 
 export const hasGroupValue = (

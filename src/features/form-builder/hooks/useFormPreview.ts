@@ -6,6 +6,7 @@ import {
 import { validatePreviewField } from '@features/form-builder/model/validation.registry';
 
 import {
+    getGroups,
     getInputFields,
     hasGroupValue,
 } from '@features/form-builder/utils/preview.utils';
@@ -47,7 +48,9 @@ export const useFormPreview = (
     );
 
     const touchField = useCallback(
-        (fieldId: string) => {
+        (
+            fieldId: string,
+        ) => {
             setTouched((previous) => ({
                 ...previous,
                 [fieldId]: true,
@@ -84,7 +87,9 @@ export const useFormPreview = (
             }
 
             const descendantFields =
-                getInputFields(group.children);
+                getInputFields(
+                    group.children,
+                );
 
             const hasTouchedChild =
                 descendantFields.some(
@@ -92,7 +97,11 @@ export const useFormPreview = (
                         touched[field.id],
                 );
 
-            if (!hasTouchedChild) {
+            const hasBeenTouched =
+                Boolean(touched[group.id]) ||
+                hasTouchedChild;
+
+            if (!hasBeenTouched) {
                 return undefined;
             }
 
@@ -115,39 +124,84 @@ export const useFormPreview = (
 
     const validateAll =
         useCallback((): FormErrors => {
-            const inputFields =
-                getInputFields(fields);
+                const inputFields =
+                    getInputFields(fields);
 
-            setTouched(
-                Object.fromEntries(
-                    inputFields.map(
-                        (field) => [
-                            field.id,
-                            true,
-                        ],
+                const groups =
+                    getGroups(fields);
+
+                /*
+                 * Mark every field and group as touched so
+                 * validation errors become visible after
+                 * the user attempts validation/submission.
+                 */
+                setTouched(
+                    Object.fromEntries(
+                        [
+                            ...inputFields,
+                            ...groups,
+                        ].map(
+                            (field) => [
+                                field.id,
+                                true,
+                            ],
+                        ),
                     ),
-                ),
-            );
+                );
 
-            return Object.fromEntries(
-                inputFields.flatMap(
-                    (field) => {
-                        const error =
-                            validatePreviewField(
-                                field,
-                                values[field.id] ?? '',
-                            );
+                const inputErrors =
+                    inputFields.flatMap(
+                        (field) => {
+                            const error =
+                                validatePreviewField(
+                                    field,
+                                    values[field.id] ?? '',
+                                );
 
-                        return error
-                            ? [[field.id, error]]
-                            : [];
-                    },
-                ),
-            );
-        }, [
-            fields,
-            values,
-        ]);
+                            if (!error) {
+                                return [];
+                            }
+
+                            return [
+                                [
+                                    field.id,
+                                    error,
+                                ] as const,
+                            ];
+                        },
+                    );
+
+                const groupErrors =
+                    groups.flatMap(
+                        (group) => {
+                            if (
+                                !group.required ||
+                                hasGroupValue(
+                                    group,
+                                    values,
+                                )
+                            ) {
+                                return [];
+                            }
+
+                            return [
+                                [
+                                    group.id,
+                                    `${group.label} requires at least one value`,
+                                ] as const,
+                            ];
+                        },
+                    );
+
+                return Object.fromEntries([
+                    ...inputErrors,
+                    ...groupErrors,
+                ]);
+            },
+            [
+                fields,
+                values,
+            ]);
 
     return {
         values,
