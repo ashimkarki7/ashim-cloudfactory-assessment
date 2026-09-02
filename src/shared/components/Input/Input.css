@@ -1,0 +1,37 @@
+.input-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-control__label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
+
+    color: var(--color-text);
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--color-primary);
+}
+
+.input--error {
+    border-color: var(--color-danger);
+}
+
+.input-control__error {
+    color: var(--color-danger);
+    font-size: 12px;
+}
